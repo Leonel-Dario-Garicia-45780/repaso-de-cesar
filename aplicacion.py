@@ -8,7 +8,7 @@ import yagmail
 app = Flask(__name__)
 
 # enviar correo
-app.config
+
 
 @app.route("/", methods=["GET","POST"])
 def inicio():
