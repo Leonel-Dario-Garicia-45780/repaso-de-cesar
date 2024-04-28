@@ -27,5 +27,5 @@ def enviarcorreo():
         except Exception as error:
             mensaje_respuesta=f" error al enviar el correo: {error}"
 
-    return render_template("archivo.html",mensaje=mensaje_respuesta)
+    return render_template("correo.html",mensaje=mensaje_respuesta)
 # fin enviar correo  ///////////////////////////////////////////

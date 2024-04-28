@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script src="../../static/js/archivo.js"></script>
+    <input type="text" id="id_producto_editado" placeholder="">
+    <input type="text" id="nombre_producto_editado" placeholder="">
+    <input type="text" id=" precio_producto_editado" placeholder="">
+    <select name="categoria" id="categoria_editado" aria-placeholder="catagoria">
+        <option value="">Selecciona la categoría</option>
+        {% for categoria in categorias %}
+            <option value="{{ categoria['nombre_de_categoria'] }}">{{ categoria['nombre_de_categoria'] }}</option>
+        {% endfor %}
+    </select>
+    <button type="button" onclick="editar_productos()">Editar producto</button>
+
+    <a href="/tabla_productos"><button>cancelar</button></a>
+
+</body>
+</html>
