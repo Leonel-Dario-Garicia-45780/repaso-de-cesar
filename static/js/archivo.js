@@ -52,15 +52,14 @@ function agregar_productos(){
 
 }
 
+//! no funciona y no descubro porque
 function editar_productos(){
-    const id_producto = id_producto_editado.value;
     const producto_editado={
-            id_del_producto_editado:       id_producto_editado.value,
             nombre_del_producto_editado:    nombre_producto_editado.value,
-            precio_del_producto_editado:     precio_producto_editado.value,
+            precio_del_producto_editado:    precio_producto_editado.value,
             categoria_del_producto_editado: categoria_editado.value 
     }
-    const url="/funcion_editar_producto"+id_producto
+    const url="/funcion_editar_producto/{{id_producto}}"
     fetch(url,{
         method:"POST",
         body: JSON.stringify(producto_editado),
@@ -79,7 +78,31 @@ function editar_productos(){
 
 }
 
-function eliminar_productos(){}
+function eliminarProducto(idProducto) {
+    if (confirm(`¿Estás seguro de que quieres eliminar el producto con ID ${idProducto}?`)) {
+        const url="/eliminar-producto/${idProducto}"
+        fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((respuesta) => respuesta.json())
+        .then((resultado) => {
+          if (resultado.estado) {
+            const filaProducto = document.getElementById(`producto-${idProducto}`);
+            filaProducto.parentNode.removeChild(filaProducto);
+            alert("Producto eliminado correctamente.");
+          } else {
+            alert("Error al eliminar el producto. Inténtalo de nuevo.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Error al eliminar el producto. Inténtalo de nuevo.");
+        });
+    }
+  }
 
 
 

@@ -29,8 +29,9 @@
                 <td>{{ producto.categoria_del_producto }}</td>
                 <td>
                     <a href="/editar_producto/{{ producto.id_del_producto }}">Editar</a>
-                    <a href="">Eliminar</a>
+                    <a href="/eliminar-producto/<idProducto>" onclick="eliminarProducto({{ producto.id_del_producto }})">Eliminar</a>
                 </td>
+                
             </tr>
             {% endfor %}
         </tbody>

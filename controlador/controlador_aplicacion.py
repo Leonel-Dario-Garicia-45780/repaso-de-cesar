@@ -117,5 +117,27 @@ def editar_producto(id_producto):
 @app.route("/elimiar_producto")
 def vista_eliminar_producto():
     return render_template("")
+
+@app.route("/eliminar-producto/<idProducto>", methods=["POST"])
+def eliminarProducto(idProducto):
+  estado = False
+  mensaje = ""
+  try:
+    objetoFiltro = {"_id": ObjectId(idProducto)}
+    accion = productos.delete_one(objetoFiltro)
+    if accion.deleted_count > 0:
+      estado = True
+      mensaje = "Producto eliminado correctamente"
+    else:
+      mensaje = f"Error al eliminar el producto con ID {idProducto}"
+  except pymongo.errors.PyMongoError as error:
+    mensaje = f"Error de MongoDB: {error}"
+
+  retorno = {"estado": estado, "mensaje": mensaje}
+  return jsonify(retorno)
+
+
+
+
 # ! fin de todo lo relacionado con productos
 
