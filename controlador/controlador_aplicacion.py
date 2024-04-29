@@ -101,7 +101,8 @@ def editar_producto(id_producto):
     mensaje = ""
     try:
         dato_producto_editado=request.json
-        accion=productos.update_one({"_id": ObjectId(id_producto)},{"$set": dato_producto_editado} )
+        print (dato_producto_editado)
+        accion=productos.update_one({"id_del_producto": id_producto},{"$set": dato_producto_editado} )
         if accion.modified_count > 0  :
             estado=True
             mensaje="producto editado correctamente"

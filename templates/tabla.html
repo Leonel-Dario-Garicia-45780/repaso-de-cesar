@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Document</title>
 </head>
 <body>
-
+<script src="../../static/js/archivo.js"></script>
     <a href="/correo">enviar un correo</a><br>
     <a href="/agregar_categoria"> ir a la categorias</a><br>
     <a href="/agregar_producto">agregar producto</a><br>
@@ -29,8 +30,11 @@
                 <td>{{ producto.categoria_del_producto }}</td>
                 <td>
                     <a href="/editar_producto/{{ producto.id_del_producto }}">Editar</a>
-                    <a href="/eliminar-producto/<idProducto>" onclick="eliminarProducto({{ producto.id_del_producto }})">Eliminar</a>
+                    
                 </td>
+                <td onclick="eliminarProducto({{ producto.id_del_producto }})">
+                    eliminar
+                    <td/>
                 
             </tr>
             {% endfor %}

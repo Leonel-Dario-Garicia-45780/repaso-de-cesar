@@ -59,7 +59,7 @@ function editar_productos(){
             precio_del_producto_editado:    precio_producto_editado.value,
             categoria_del_producto_editado: categoria_editado.value 
     }
-    const url="/funcion_editar_producto/{{id_producto}}"
+    const url="/funcion_editar_producto/"+id_producto
     fetch(url,{
         method:"POST",
         body: JSON.stringify(producto_editado),
@@ -80,7 +80,7 @@ function editar_productos(){
 
 function eliminarProducto(idProducto) {
     if (confirm(`¿Estás seguro de que quieres eliminar el producto con ID ${idProducto}?`)) {
-        const url="/eliminar-producto/${idProducto}"
+        const url="/eliminar-producto/"+idProducto
         fetch(url, {
         method: "POST",
         headers: {
